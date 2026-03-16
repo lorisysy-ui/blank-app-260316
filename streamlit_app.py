@@ -60,6 +60,61 @@ def get_gdp_data():
 gdp_df = get_gdp_data()
 
 # -----------------------------------------------------------------------------
+# Streamlit 요소 데모 섹션
+with st.expander('Streamlit 주요 UI 요소 데모', expanded=False):
+    st.write('Streamlit에서 자주 사용하는 다양한 UI 요소 예시입니다.')
+    st.header('텍스트/마크다운')
+    st.text('이것은 일반 텍스트입니다.')
+    st.markdown('**이것은 마크다운 텍스트입니다!**')
+    st.code('print("Hello, Streamlit!")', language='python')
+    st.header('버튼')
+    if st.button('클릭해보세요!'):
+        st.success('버튼이 클릭되었습니다!')
+    st.header('체크박스')
+    checked = st.checkbox('동의합니다')
+    st.write('체크박스 상태:', checked)
+    st.header('라디오 버튼')
+    radio_val = st.radio('라디오 선택', ['옵션 1', '옵션 2', '옵션 3'])
+    st.write('선택된 값:', radio_val)
+    st.header('슬라이더')
+    slider_val = st.slider('값을 선택하세요', 0, 100, 50)
+    st.write('슬라이더 값:', slider_val)
+    st.header('셀렉트박스')
+    select_val = st.selectbox('하나를 선택하세요', ['A', 'B', 'C'])
+    st.write('선택:', select_val)
+    st.header('멀티셀렉트')
+    multi_val = st.multiselect('여러 개 선택', ['Python', 'Java', 'C++'])
+    st.write('선택:', multi_val)
+    st.header('입력창')
+    text_input = st.text_input('텍스트 입력')
+    st.write('입력값:', text_input)
+    st.header('숫자 입력')
+    num_input = st.number_input('숫자 입력', min_value=0, max_value=100, value=10)
+    st.write('입력값:', num_input)
+    st.header('파일 업로드')
+    uploaded_file = st.file_uploader('파일을 업로드하세요')
+    if uploaded_file:
+        st.write('업로드된 파일명:', uploaded_file.name)
+    st.header('컬럼 레이아웃')
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write('왼쪽 컬럼')
+    with col2:
+        st.write('오른쪽 컬럼')
+    st.header('진행바')
+    import time
+    if st.button('진행바 실행'):
+        progress = st.progress(0)
+        for i in range(1, 101):
+            time.sleep(0.01)
+            progress.progress(i)
+        st.success('완료!')
+    st.header('경고/성공/에러 메시지')
+    st.warning('이것은 경고 메시지입니다!')
+    st.success('이것은 성공 메시지입니다!')
+    st.error('이것은 에러 메시지입니다!')
+
+# -----------------------------------------------------------------------------
 # Draw the actual page
 
 # Set the title that appears at the top of the page.
